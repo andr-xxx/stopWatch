@@ -3577,7 +3577,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
             // Resolve 'global' dependencies for the state, i.e. those not specific to a views.
             // We're also including $stateParams in this; that way the parameters are restricted
-            // to the set that should be visible to the state, and are independent of when we update
+            // to the set that should be settings to the state, and are independent of when we update
             // the global $state and $stateParams values.
             dst.resolve = $resolve.resolve(state.resolve, locals, dst.resolve, state);
             var promises = [dst.resolve.then(function (globals) {

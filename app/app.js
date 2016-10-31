@@ -3,9 +3,10 @@
 var stopWatch = angular.module('stopWatch', []);
 
 stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
-   $scope.visible = {
+   $scope.settings = {
       startStop: true,
-      clearLap: true
+      clearLap: true,
+      active: false
    };
    $scope.lap = {
       ms: '00',
@@ -20,41 +21,44 @@ stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
    $scope.lapArr = [];
 
    $scope.start = function () {
+      $scope.settings.active = true;
+      clearTimer();
       startTimer($scope.lap);
       startTimer($scope.timer);
-      $scope.visible.startStop = false;
-      $scope.visible.clearLap = true;
+      $scope.settings.startStop = false;
+      $scope.settings.clearLap = true;
       $scope.lapArr = [];
    };
 
    $scope.stop = function () {
-      stopTimer();
-      $scope.visible.startStop = true;
+      pauseTimer($scope.lap.id);
+      pauseTimer($scope.timer.id);
+      $scope.settings.startStop = true;
       if ($scope.lapArr.length > 0) {
-         $scope.visible.clearLap = false;
+         $scope.settings.clearLap = false;
       }
+      $scope.settings.active = false;
    };
 
    $scope.clear = function () {
-      $scope.visible.clearLap = true;
+      $scope.settings.clearLap = true;
       $scope.lapArr = [];
    };
    $scope.lapC = function () {
-      if (!$scope.timer.id) {
-         return
+      if ($scope.settings.active) {
+         var tempObj = {
+            ms: $scope.lap.ms,
+            sec: $scope.lap.sec,
+            min: $scope.lap.min
+         };
+         $scope.lap = {
+            ms: '00',
+            sec: '00',
+            min: '00'
+         };
+         startTimer($scope.lap)
+         $scope.lapArr.push(tempObj)
       }
-      var tempObj = {
-         ms: $scope.lap.ms,
-         sec: $scope.lap.sec,
-         min: $scope.lap.min
-      };
-      $scope.lap = {
-         ms: '00',
-         sec: '00',
-         min: '00'
-      };
-      startTimer($scope.lap)
-      $scope.lapArr.push(tempObj)
    };
 
 
@@ -88,9 +92,7 @@ stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
       $interval.cancel(id)
    };
 
-   var stopTimer = function () {
-      pauseTimer($scope.lap.id);
-      pauseTimer($scope.timer.id);
+   var clearTimer = function () {
       $scope.lap = {
          ms: '00',
          sec: '00',
@@ -102,11 +104,5 @@ stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
          min: '00'
       };
    };
-   var clearTimer = function (obj) {
-      obj = {
-         ms: '00',
-         sec: '00',
-         min: '00'
-      };
-   }
+
 });

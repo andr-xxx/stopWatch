@@ -18,12 +18,12 @@
           <span>{{ timer.min }}:{{ timer.sec }},{{ timer.ms }}</></div>
       </div>
       <div class="col-md-2">
-        <div class="buttonClick start" ng-click="start()" ng-if="visible.startStop">Старт</div>
-        <div class="buttonClick stop" ng-click="stop()" ng-if="!visible.startStop">Стоп</div>
+        <div class="buttonClick start" ng-click="start()" ng-if="settings.startStop">Старт</div>
+        <div class="buttonClick stop" ng-click="stop()" ng-if="!settings.startStop">Стоп</div>
       </div>
       <div class="col-md-2">
-        <div class="buttonClick" ng-click="lapC()" ng-if="visible.clearLap">Круг</div>
-        <div class="buttonClick" ng-click="clear()" ng-if="!visible.clearLap">Сброс</div>
+        <div class="buttonClick" ng-click="lapC()" ng-if="settings.clearLap">Круг</div>
+        <div class="buttonClick" ng-click="clear()" ng-if="!settings.clearLap">Сброс</div>
       </div>
     </div>
     <div class="row">
