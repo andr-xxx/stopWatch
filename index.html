@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="stopWatch">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="libs/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="libs/angular.min.js"></script>
+  <script src="app/app.js"></script>
+</head>
+<body ng-controller="stopWatchCtrl">
+<div class="container-fluid">
+  <div class="main-cont">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="lap-timer timer"><span>{{ lap.min }}:{{ lap.sec }},{{ lap.ms }}</span></div>
+        <div class="main-timer timer">
+          <span>{{ timer.min }}:{{ timer.sec }},{{ timer.ms }}</></div>
+      </div>
+      <div class="col-md-2">
+        <div class="buttonClick start" ng-click="start()" ng-if="visible.startStop">Старт</div>
+        <div class="buttonClick stop" ng-click="stop()" ng-if="!visible.startStop">Стоп</div>
+      </div>
+      <div class="col-md-2">
+        <div class="buttonClick" ng-click="lapC()" ng-if="visible.clearLap">Круг</div>
+        <div class="buttonClick" ng-click="clear()" ng-if="!visible.clearLap">Сброс</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="list-times">
+          <ul>
+            <li ng-repeat="obj in lapArr">Круг {{ $index + 1}} - <span>{{ obj.min }}:{{ obj.sec }},{{ obj.ms }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

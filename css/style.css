@@ -1,0 +1,43 @@
+.main-cont {
+    margin-top:20px;
+}
+.main-cont span {
+    font-family:monospace;
+}
+.buttonClick {
+    border: 2px solid black;
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    text-align: center;
+    line-height: 113px;
+    font-size: 30px;
+    font-weight:bold;
+    cursor: pointer;
+}
+.buttonClick.start {
+    color: green;
+}
+.buttonClick.stop {
+    color: red;
+}
+.timer {
+    text-align: right;
+}
+.lap-timer {
+    color: grey;
+    font-size:22px;
+}
+.main-timer {
+    font-size: 36px;
+    font-weight:bold;
+}
+.list-times {
+    text-align: right;
+    margin-right: 40px;
+    margin-top:40px;
+}
+.list-times li {
+    list-style: none;
+    font-size:22px;
+}
