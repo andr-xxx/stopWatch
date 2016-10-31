@@ -34,9 +34,7 @@ stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
       pauseTimer($scope.lap.id);
       pauseTimer($scope.timer.id);
       $scope.settings.startStop = true;
-      if ($scope.lapArr.length > 0) {
-         $scope.settings.clearLap = false;
-      }
+      $scope.settings.clearLap = false;
       $scope.settings.active = false;
    };
 
