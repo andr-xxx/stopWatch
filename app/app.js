@@ -43,6 +43,7 @@ stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
    $scope.clear = function () {
       $scope.settings.clearLap = true;
       $scope.lapArr = [];
+      clearTimer();
    };
    $scope.lapC = function () {
       if ($scope.settings.active) {
