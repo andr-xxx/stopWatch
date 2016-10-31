@@ -1,5 +1,4 @@
 // умышленно исспользован контроллер монолит и всего один файл, т.к. маштабирования приложения не будет
-//
 
 var stopWatch = angular.module('stopWatch', []);
 
@@ -24,8 +23,8 @@ stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
       startTimer($scope.lap);
       startTimer($scope.timer);
       $scope.visible.startStop = false;
-      $scope.lapArr = [];
       $scope.visible.clearLap = true;
+      $scope.lapArr = [];
    };
 
    $scope.stop = function () {
@@ -49,6 +48,12 @@ stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
          sec: $scope.lap.sec,
          min: $scope.lap.min
       };
+      $scope.lap = {
+         ms: '00',
+         sec: '00',
+         min: '00'
+      };
+      startTimer($scope.lap)
       $scope.lapArr.push(tempObj)
    };
 
@@ -92,6 +97,13 @@ stopWatch.controller('stopWatchCtrl', function ($scope, $interval) {
          min: '00'
       };
       $scope.timer = {
+         ms: '00',
+         sec: '00',
+         min: '00'
+      };
+   };
+   var clearTimer = function (obj) {
+      obj = {
          ms: '00',
          sec: '00',
          min: '00'
